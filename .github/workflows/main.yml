@@ -18,15 +18,12 @@ jobs:
         # обновление pip
         python -m pip install --upgrade pip 
         # установка flake8 и его плагинов
-        pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
+        pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort pytest
         # установка зависимостей
         pip install -r requirements.txt 
 
-    - name: Test with flake8 and django tests
-      run: |
-        # запуск проверки проекта по flake8
-        python flake8
-        # перейти в папку, содержащую manage.py - www2/infra_actions/infra_project/manage.py
-        cd www2/infra_actions/infra_project/infra_app/
-        # запустить написанные разработчиком тесты
-        python manage.py test 
+    - name: Lint with flake8
+      run: flake8 .
+
+    - name: Test with pytest
+      run: pytest tests.py
