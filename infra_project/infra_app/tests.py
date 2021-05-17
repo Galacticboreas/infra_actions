@@ -19,5 +19,6 @@ class StaticPagesURLTests(TestCase):
         """Проверка контекста страниц."""
         response = self.guest_client.get('/')
         self.assertContains(response, 'У меня получилось!')
+        
         response = self.guest_client.get('/second_page/')
         self.assertContains(response, 'А это вторая страница!')
