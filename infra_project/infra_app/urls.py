@@ -1,11 +1,10 @@
 from django.urls import path
 
-from . import views
+from .views import second_page, index
 
 app_name = 'infra_app'
 
 urlpatterns = [
-    path('/', views.index, name='index'),
-    path('/second/', views.second_page, name='second_page'),
-
+    path('', index, name='index'),
+    path('second_page/', second_page, name='second_page'),
 ]
