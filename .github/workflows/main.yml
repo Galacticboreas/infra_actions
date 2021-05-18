@@ -22,8 +22,11 @@ jobs:
         # установка зависимостей
         pip install -r requirements.txt 
 
-    - name: Lint with flake8
-      run: flake8 .
-
-    - name: Test with pytest
-      run: pytest tests.py
+    - name: Test with flake8 and django tests
+      run: |
+        # запуск проверки проекта по flake8
+        python flake8
+        # перейти в папку, содержащую manage.py - <корневая_папка>/<папка_проекта>/manage.py
+        cd infra_project/
+        # запустить написанные разработчиком тесты
+        python manage.py test
